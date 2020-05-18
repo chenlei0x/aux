@@ -1,0 +1,3 @@
+module_dir=/data/tkernel3-public/kernel/tkernel/kpatch/
+cd ${module_dir}
+make -C /lib/modules/`uname -r`/build M=`pwd` modules

@@ -1,0 +1,3 @@
+#! /bin/bash
+
+scp -P 36000 -r lennychen@10.6.188.116:${1} .

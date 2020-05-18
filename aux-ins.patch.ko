@@ -1,0 +1,10 @@
+patch_dir=/data/kpatch_build_root/cache/tmp/patch
+cd $patch_dir
+patch_ko=$(find . -name "*.ko")
+if [ -n "$patch_ko" ];
+then
+	echo insmode $patch_ko
+	insmod $patch_ko
+else
+	echo "patch not found"
+fi
