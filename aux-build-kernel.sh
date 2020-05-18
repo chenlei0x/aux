@@ -3,9 +3,15 @@ set -e
 set -u
 
 prj=iolat
-version=$(git tag | grep $prj | grep -o "v.*" | grep -o  -P "\d+" | sort -g -r | head -n1)
-rpm_path=/data/rpmbuild/RPMS/x86_64
 tag_prefix=3.10.107-1-tlinux2-0050_nosign
+rpm_path=/data/rpmbuild/RPMS/x86_64
+
+version=$(git tag | grep $prj | grep -o "v.*" | grep -o  -P "\d+" | sort -g -r | head -n1)
+if [ -z $version ]
+then
+	version=0
+fi
+
 if [ -n "$(git log --deco HEAD | head -n 1 | grep tag | grep $prj)" ]
 then
 	echo "HEAD with [$prj] tag???"
